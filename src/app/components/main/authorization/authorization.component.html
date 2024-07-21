@@ -1,0 +1,24 @@
+<div id="form">
+    <div>
+        <form [formGroup]="form">
+            <div id="container">
+                <h1 id="label">log In</h1>
+                <div class="form-input">
+                    <mat-form-field class="input">
+                        <mat-label>Email</mat-label>
+                        <input matInput style="width: 100%;" formControlName="email">
+                    </mat-form-field>                    
+                </div>
+                <div class="form-input">
+                    <mat-form-field class="input">
+                        <mat-label>Password</mat-label>
+                        <input matInput style="width: 100%;" formControlName="password">
+                    </mat-form-field> 
+                </div>
+                <div class="form-input">
+                    <button mat-raised-button style="width: 100%;" (click)="submit()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
