@@ -22,7 +22,9 @@ export class AuthorizationComponent implements OnInit{
 
   submit(){
     this.loginService.logIn(this.form.value);
-    this.route.navigate(['/assessments'])
+    if(localStorage.getItem('X-Token')){
+      this.route.navigate(['/assessments'])
+    }
   }
 
 }

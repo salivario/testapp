@@ -11,6 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   user!: UserAnswer;
+  
 
   logIn(form:UserForm){
     this.http.post<UserAnswer>('https://user-assessment-api.vercel.app/api/login', form).subscribe(

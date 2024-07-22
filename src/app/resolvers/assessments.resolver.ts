@@ -14,7 +14,6 @@ import { Assessments } from '../interfaces/assessments';
 export class AssessmentsResolver implements Resolve<Assessments> {
   constructor(private getassessmentsService: GetassessmentsService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Assessments> {
-     console.log(this.getassessmentsService.getGrade())
      return this.getassessmentsService.getGrade()
   }
 }

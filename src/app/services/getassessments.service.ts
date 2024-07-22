@@ -8,9 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class GetassessmentsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
+
+  getToken(){
+    return localStorage.getItem('X-Token');
+  }
+
   headers = new HttpHeaders({
-    'X-Token': localStorage.getItem('X-Token') || '',
+    'X-Token':  this.getToken() || '',
   });
   getGrade(): Observable<Assessments> {
    return this.http.get<Assessments>('https://user-assessment-api.vercel.app/api/userassessments', {headers: this.headers})

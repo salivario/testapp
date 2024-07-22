@@ -1,1 +1,24 @@
-<div>{{assestments}}</div>
+<div id="container" *ngSwitch="role">
+    <ng-template ngSwitchCase="user">
+        <div id="profile">
+            <div *ngFor="let assessment of assessments">
+                <h3>{{ assessment.name }}</h3>
+                <p>ID: {{ assessment.id }}</p>
+                <img style="border-radius: 100px;" [src]="assessment.image_url" alt="{{ assessment.name }}">
+            </div>
+        </div>
+        <div id="button-container" *ngFor="let assessment of assessments">
+            <div *ngIf="!isGraph" id="button"><button (click)="printGraph(assessment.id)" mat-raised-button>Get Graph</button></div>
+            <div>
+                <div *ngIf="isGraph">
+                    <div *ngFor="let item of graph.data | keyvalue">
+                        <h1>{{item.key}}: {{item.value}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template ngSwitchCase="admin">
+
+    </ng-template>
+</div>
