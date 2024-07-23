@@ -23,7 +23,6 @@ export class AuthorizationComponent implements OnInit{
   submit(){
     if(localStorage.getItem('X-Token')){
       localStorage.removeItem('x-Token');
-      console.log('rem')
     }
     this.loginService.logIn(this.form.value);
 

@@ -7,12 +7,17 @@
         </div>
     </div>
     <div id="button-container" *ngFor="let assessment of assessments">
-        <div *ngIf="!isGraph" id="button"><button mat-raised-button>Get Graph</button></div>
+        <div *ngIf="!isGraph" (click)="printGraph(assessment.id)" id="button"><button mat-raised-button>Get Graph</button></div>
         <div>
             <div *ngIf="isGraph">
-                <div *ngFor="let item of graph.data | keyvalue">
-                    <h1>{{item.key}}: {{item.value}}</h1>
-                </div>
+                <form [formGroup]="form">
+                    <div *ngFor="let item of graph.data | keyvalue">
+                        <input type="text" placeholder="{{item.key}}" formControlName="{{item.key}}">
+                    </div>
+                    <div>
+                        <input type="button" (click)="onSubmit()" value="Submit">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

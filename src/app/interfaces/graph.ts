@@ -1,9 +1,9 @@
 export interface Graph {
     data: {
-        Agreeableness: number,
-        Drive: number,
-        Luck: number,
-        Openess: number,
+        agreeableness: number,
+        drive: number,
+        luck: number,
+        openness: number,
     }
     type: string,
 }
