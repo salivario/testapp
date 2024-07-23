@@ -1,5 +1,5 @@
-<div id="container" *ngSwitch="role">
-    <ng-template ngSwitchCase="user">
+<div id="container" [ngSwitch]="role">
+    <div *ngSwitchCase="'User'">
         <div id="profile">
             <div *ngFor="let assessment of assessments">
                 <h3>{{ assessment.name }}</h3>
@@ -17,8 +17,17 @@
                 </div>
             </div>
         </div>
-    </ng-template>
-    <ng-template ngSwitchCase="admin">
-
-    </ng-template>
+    </div>
+    <div *ngSwitchCase="'Admin'">
+        <div>
+            <div id="profile">
+                <div *ngFor="let assessment of assessments">
+                    <h3>{{ assessment.name }}</h3>
+                    <p>ID: {{ assessment.id }}</p>
+                    <img style="border-radius: 100px;" [src]="assessment.image_url" alt="{{ assessment.name }}">
+                    <button (click)="send(assessment)" mat-raised-button>Get user graph</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

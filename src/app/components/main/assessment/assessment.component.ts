@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Assessments } from 'src/app/interfaces/assessments';
 import { Graph } from 'src/app/interfaces/graph';
+import { Role } from 'src/app/interfaces/role';
+import { AdminService } from 'src/app/services/admin.service';
 import { GetgraphService } from 'src/app/services/getgraph.service';
+
 
 @Component({
   selector: 'app-assessment',
@@ -11,7 +14,10 @@ import { GetgraphService } from 'src/app/services/getgraph.service';
   styleUrls: ['./assessment.component.scss']
 })
 export class AssessmentComponent implements OnInit{
-  constructor(private route: ActivatedRoute, private getgraphService: GetgraphService){}
+  role!: string;
+  constructor(private route: ActivatedRoute, private getgraphService: GetgraphService, private store: Store<Role>, private adminService: AdminService, private router: Router){
+    this.store.select('role').subscribe(data => this.role = data)
+  }
   assessments!: Assessments[];
   graph!: Graph;
   isGraph: boolean = false;
@@ -25,5 +31,10 @@ export class AssessmentComponent implements OnInit{
     this.getgraphService.getGraph(id).subscribe(data => {
       this.isGraph = true;
       return this.graph = data});
+  }
+  send(user: Assessments){
+    this.adminService.setUserAssessment(user);
+    this.router.navigate(['/admin/new-assessments'])
+
   }
 }

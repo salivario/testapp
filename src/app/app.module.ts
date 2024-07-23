@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from './components/ui/ui.module';
 import { MainModule } from './components/main/main.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { roleReducer } from './reducers/role.reducer';
+import { logReducer } from './reducers/log.reducer';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     UiModule,
     MainModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ role: roleReducer, log: logReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

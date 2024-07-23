@@ -1,0 +1,22 @@
+#container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#profile{
+    position: static;
+    height: 350px;
+    top: 0;
+    width: 500px;
+}
+#button-container{
+    display: flex;
+    justify-content: space-around;
+}
+#button{
+    width: 300px;
+}
+#button button{
+    width: 100%;
+}

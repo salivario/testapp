@@ -1,0 +1,19 @@
+<div>
+    <div id="profile">
+        <div *ngFor="let assessment of assessments">
+            <h3>{{ assessment.name }}</h3>
+            <p>ID: {{ assessment.id }}</p>
+            <img style="border-radius: 100px;" [src]="assessment.image_url" alt="{{ assessment.name }}">
+        </div>
+    </div>
+    <div id="button-container" *ngFor="let assessment of assessments">
+        <div *ngIf="!isGraph" id="button"><button mat-raised-button>Get Graph</button></div>
+        <div>
+            <div *ngIf="isGraph">
+                <div *ngFor="let item of graph.data | keyvalue">
+                    <h1>{{item.key}}: {{item.value}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

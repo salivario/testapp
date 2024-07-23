@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./authorization.component.scss']
 })
 export class AuthorizationComponent implements OnInit{
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private route: Router){}
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder){}
 
   form!: FormGroup;
   ngOnInit(): void {
@@ -21,10 +21,12 @@ export class AuthorizationComponent implements OnInit{
   }
 
   submit(){
-    this.loginService.logIn(this.form.value);
     if(localStorage.getItem('X-Token')){
-      this.route.navigate(['/assessments'])
+      localStorage.removeItem('x-Token');
+      console.log('rem')
     }
+    this.loginService.logIn(this.form.value);
+
   }
 
 }
